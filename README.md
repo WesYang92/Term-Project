@@ -1,2 +1,3 @@
 # Term-Project
-# Group Members: Wes Yang, Aaradh Benara
+
+Group Members: Wes Yang, Aaradh Benara
