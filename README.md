@@ -29,6 +29,7 @@ Aaradh:
 4. Creating a GitHub repository
 5. Configuring API keys and environment variables
 6. Setting up the basic project structure
+
 **Phase 2:**
 1. Smart Search Integration
 2. OpenAI Integration
