@@ -16,7 +16,7 @@ Gain experience with natural language processing
 Learn effective error handling across multiple APIs
 #### Individual Goals:
 Wes: Produce a coherent web page that combines the use of APIs and self-designed algorithms (API integration).
-Aaradh: 
+Aaradh: Design the results display to be clear and visually appealing with a scrollable list of cocktail options (UI and Result Display).
 ## Implementation Plan:
 + Frontend: Flask templates, CSS
 + Backend: Python/Flask, API integration
