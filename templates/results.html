@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artisanal Cocktail Discoveries</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .hero-pattern {
+            background-color: #ffffff;
+            background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c45d3c' fill-opacity='0.05'%3E%3Cpath d='M50 50c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10s-10-4.477-10-10 4.477-10 10-10zM10 10c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10S0 25.523 0 20s4.477-10 10-10zm10 8c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm40 40c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+<body class="bg-amber-50 min-h-screen hero-pattern">
+    <div class="container mx-auto px-4 py-8">
+        <!-- Header -->
+        <div class="flex justify-between items-center mb-8">
+            <h1 class="text-4xl font-bold text-amber-900">Crafted Selections</h1>
+            <a href="/" class="bg-amber-700 hover:bg-amber-800 text-white font-bold py-3 px-6 rounded-lg transform transition duration-200 hover:scale-105 shadow-lg">
+                New Discovery
+            </a>
+        </div>
+
+        <!-- Search Query Display -->
+        {% if query %}
+        <div class="mb-8 bg-white/90 rounded-xl shadow-lg p-6 backdrop-blur-sm">
+            <p class="text-amber-800 text-lg">Your request: <span class="font-semibold italic">"{{ query }}"</span></p>
+            {% if characteristics %}
+            <div class="mt-3 flex flex-wrap gap-2">
+                {% for char in characteristics %}
+                <span class="bg-amber-100 text-amber-800 text-sm px-3 py-1 rounded-full font-medium">{{ char }}</span>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+        {% endif %}
+
+        <!-- Error Messages -->
+        {% if error %}
+        <div class="bg-red-50 border-l-4 border-red-500 text-red-700 p-6 rounded-r-xl mb-8 shadow-md">
+            {{ error }}
+        </div>
+        {% endif %}
+
+        <!-- Results Grid -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {% for cocktail in cocktails %}
+            <div class="bg-white/90 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                <img src="{{ cocktail.strDrinkThumb }}" 
+                     alt="{{ cocktail.strDrink }}" 
+                     class="w-full h-56 object-cover">
+                <div class="p-6">
+                    <h2 class="text-2xl font-bold mb-3 text-amber-900">{{ cocktail.strDrink }}</h2>
+                    <a href="/cocktail/{{ cocktail.idDrink }}" 
+                       class="inline-flex items-center text-amber-700 hover:text-amber-900 font-semibold transition-colors duration-200">
+                        View Recipe 
+                        <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- No Results Message -->
+        {% if not cocktails %}
+        <div class="text-center py-12 bg-white/90 rounded-xl shadow-lg backdrop-blur-sm">
+            <div class="text-6xl mb-4">🍸</div>
+            <p class="text-amber-800 text-xl mb-4">No cocktails found matching your criteria.</p>
+            <p class="text-amber-600">Try adjusting your search for different results!</p>
+        </div>
+        {% endif %}
+
+        <!-- Cocktail Details Modal -->
+        {% if selected_cocktail %}
+        <div class="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4">
+            <div class="bg-white rounded-xl max-w-3xl w-full mx-auto max-h-[90vh] overflow-y-auto relative">
+                <div class="p-8">
+                    <!-- Modal Content -->
+                    <h2 class="text-3xl font-bold mb-6 text-amber-900">{{ selected_cocktail.strDrink }}</h2>
+                    
+                    <img src="{{ selected_cocktail.strDrinkThumb }}" 
+                         alt="{{ selected_cocktail.strDrink }}" 
+                         class="w-full h-72 object-cover rounded-xl shadow-lg mb-8">
+                    
+                    <div class="grid md:grid-cols-2 gap-8 mb-8">
+                        <!-- Ingredients -->
+                        <div class="bg-amber-50 p-6 rounded-xl shadow-md">
+                            <h3 class="font-bold text-xl mb-4 text-amber-900">Ingredients</h3>
+                            <ul class="space-y-3">
+                                {% for ingredient in selected_cocktail.formatted_ingredients %}
+                                <li class="flex items-center">
+                                    <span class="w-2 h-2 bg-amber-500 rounded-full mr-3"></span>
+                                    <span class="text-amber-800">{{ ingredient }}</span>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+
+                        <!-- Instructions -->
+                        <div class="bg-amber-50 p-6 rounded-xl shadow-md">
+                            <h3 class="font-bold text-xl mb-4 text-amber-900">Instructions</h3>
+                            <p class="text-amber-800 leading-relaxed">{{ selected_cocktail.strInstructions }}</p>
+                            {% if selected_cocktail.strGlass %}
+                            <div class="mt-6 pt-4 border-t border-amber-200">
+                                <span class="font-semibold text-amber-900">Serve in:</span> 
+                                <span class="text-amber-800">{{ selected_cocktail.strGlass }}</span>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <!-- Close Button -->
+                    <div class="text-center">
+                        <button onclick="window.history.back()" 
+                                class="bg-amber-700 hover:bg-amber-800 text-white font-bold py-3 px-8 rounded-lg transform transition duration-200 hover:scale-105 shadow-lg">
+                            Close Recipe
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>

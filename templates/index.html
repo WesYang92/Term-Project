@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artisanal Cocktail Discovery</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .hero-pattern {
+            background-color: #ffffff;
+            background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c45d3c' fill-opacity='0.05'%3E%3Cpath d='M50 50c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10s-10-4.477-10-10 4.477-10 10-10zM10 10c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10S0 25.523 0 20s4.477-10 10-10zm10 8c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm40 40c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+<body class="bg-amber-50 min-h-screen hero-pattern">
+    <div class="container mx-auto px-4 py-8">
+        <!-- Hero Section -->
+        <div class="text-center mb-12">
+            <h1 class="text-5xl font-extrabold text-amber-900 mb-4">
+                Craft Your Perfect Moment
+            </h1>
+            <p class="text-lg text-amber-700">Discover the perfect cocktail for any occasion</p>
+        </div>
+
+        <!-- Main Content -->
+        <div class="max-w-4xl mx-auto">
+            <!-- Image Grid -->
+            <div class="grid grid-cols-3 gap-4 mb-8">
+                <div class="rounded-lg overflow-hidden shadow-lg">
+                    <img src="https://i.pinimg.com/originals/b3/34/20/b334201f0db42d087d00a4d155df3a0e.jpg" alt="Cozy bar interior" class="w-full h-48 object-cover"/>
+                </div>
+                <div class="rounded-lg overflow-hidden shadow-lg">
+                    <img src="https://www.halfbakedharvest.com/wp-content/uploads/2022/12/Christmas-Vacation-Dirty-Chai-Cocktail-with-mocktail-1.jpg" alt="Craft cocktail preparation" class="w-full h-48 object-cover"/>
+                </div>
+                <div class="rounded-lg overflow-hidden shadow-lg">
+                    <img src="https://luxurylifestyleawards.com/wp-content/uploads/2022/03/caroline-hernandez-8IR7jXjNG0w-unsplash.jpg" alt="Elegant cocktail" class="w-full h-48 object-cover"/>
+                </div>
+            </div>
+
+            <!-- Search Form -->
+            <form action="/search" method="POST" class="bg-white shadow-2xl rounded-xl px-8 pt-8 pb-10 mb-8 backdrop-blur-sm bg-white/90">
+                <div class="mb-8">
+                    <label class="block text-amber-900 text-lg font-semibold mb-4" for="query">
+                        What's your perfect drink?
+                    </label>
+                    <input 
+                        class="shadow-lg appearance-none border-2 border-amber-200 rounded-lg w-full py-4 px-6 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition duration-200"
+                        id="query"
+                        name="query"
+                        type="text"
+                        placeholder="Describe your ideal cocktail..."
+                        required
+                    >
+                    
+                    <!-- Suggestion Cards -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+                        <div class="bg-amber-50 rounded-lg p-4 shadow-md">
+                            <p class="text-amber-900 font-medium mb-2">Summer Vibes</p>
+                            <p class="text-amber-700 text-sm">"a refreshing citrus cocktail with mint for a summer party"</p>
+                        </div>
+                        <div class="bg-amber-50 rounded-lg p-4 shadow-md">
+                            <p class="text-amber-900 font-medium mb-2">Winter Warmth</p>
+                            <p class="text-amber-700 text-sm">"something warm and spicy for a cozy winter evening"</p>
+                        </div>
+                        <div class="bg-amber-50 rounded-lg p-4 shadow-md">
+                            <p class="text-amber-900 font-medium mb-2">Classic Style</p>
+                            <p class="text-amber-700 text-sm">"a sophisticated gin cocktail with herbal notes"</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-center">
+                    <button 
+                        class="bg-amber-700 hover:bg-amber-800 text-white font-bold py-4 px-8 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 transform transition duration-200 hover:scale-105 shadow-lg"
+                        type="submit">
+                        Discover Your Cocktail
+                    </button>
+                </div>
+            </form>
+
+            <!-- Features Section -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center mb-12">
+                <div class="bg-white/80 rounded-xl p-6 shadow-lg backdrop-blur-sm">
+                    <div class="text-amber-700 text-2xl mb-3">🍸</div>
+                    <h3 class="text-amber-900 font-semibold mb-2">Craft Cocktails</h3>
+                    <p class="text-amber-700">Discover unique and delicious combinations</p>
+                </div>
+                <div class="bg-white/80 rounded-xl p-6 shadow-lg backdrop-blur-sm">
+                    <div class="text-amber-700 text-2xl mb-3">🌿</div>
+                    <h3 class="text-amber-900 font-semibold mb-2">Fresh Ingredients</h3>
+                    <p class="text-amber-700">Perfect balance of flavors and aromatics</p>
+                </div>
+                <div class="bg-white/80 rounded-xl p-6 shadow-lg backdrop-blur-sm">
+                    <div class="text-amber-700 text-2xl mb-3">✨</div>
+                    <h3 class="text-amber-900 font-semibold mb-2">Expert Curated</h3>
+                    <p class="text-amber-700">Professional bartender recommendations</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
