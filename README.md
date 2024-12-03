@@ -76,3 +76,8 @@ The biggest difficulty is how to better handle integration between multiple APIs
 + Managing multiple API integrations (TheCocktailDB + OpenAI)
 + API Key Management
 + Structured error handling
+
+## Update(Some parts from Chatgpt)
++ Added Bartending Tip 
++ Added Interactive Bartending Games 
++ Added Music Section 
